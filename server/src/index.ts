@@ -7,11 +7,15 @@ import { Request, Response } from "express";
 
 import { createCourse } from "./Courses/createCourse";
 import { getStudentByEmail } from "./Auth/readUser";
-import { createStudent } from "./Auth/createUser";
+import { createStudent } from "./Auth/createUser"; 
+import { json } from "body-parser";
 
 const app = express();
 const client = new MongoClient(process.env.MONGODB_URI || "");
 app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}))
 
 app.use(
   cors({
@@ -23,11 +27,13 @@ app.listen(3001, () => {
   console.log("server running");
 });
 
-app.post("/AddCourse", (req: Request, res: Response) => {
-  if (client) createCourse(client, req.body ?? {});
-
-  res.json('{"f":"fff"}');
+app.post("/AddCourse", (req:Request, res: Response) => {
+ 
+  if (client) createCourse(client, req.body ??  {}   );
+  res.json('{"f":"fff"}')
 });
+
+
 app.get(
   "/signin",
   (req: Request, res: Response, next: NextFunction) => {

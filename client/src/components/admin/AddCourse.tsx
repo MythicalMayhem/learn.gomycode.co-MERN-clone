@@ -154,8 +154,13 @@ export function AddCourse() {
   const handleSubmit = (data: Checkpoints) => {
     fetch("http://127.0.0.1:3001/AddCourse", {
       method: "POST",
-      body: JSON.stringify(checkpoints),
-    }).then((res)=>res.json()).then(console.log)
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ checkpoints, id: uuidv4(), name: courseName }),
+    })
+      .then((res) => res.json())
+      .then(console.log);
   };
   return (
     <>
