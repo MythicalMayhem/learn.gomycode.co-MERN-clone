@@ -61,6 +61,12 @@ export interface Checkpoint {
 export interface Checkpoints {
   [id: string]: Checkpoint;
 }
+export interface Course {
+  id: string;
+  name: string;
+  image: string;
+  checkpoints: Checkpoints;
+}
 
 export function AddCourse() {
   const [courseImage, setCourseImage] = useState<any>(null);

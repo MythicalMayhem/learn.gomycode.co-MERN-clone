@@ -1,6 +1,8 @@
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
- 
+
+
+
 function Auth() {
     return ( 
         <>

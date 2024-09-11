@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
+
 function App() {
   return (
     <div>
       <h1>Home Page</h1>
-      <a href="/admin">Admin</a>
+      <Link to="/admin"> Admin</Link> <br />
+      <Link to="/courses">Courses</Link>
     </div>
   );
 }
