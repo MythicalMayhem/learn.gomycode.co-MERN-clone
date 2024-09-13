@@ -1,15 +1,12 @@
 import { useState } from "react";
+import { userStore } from "../../lib/userStore";
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const user = userStore()
   async function handleSignIn() {
-    fetch("http://127.0.0.1:3001/signin", {
-      method: "GET",
-      headers: { password, email },
-    })
-      .then((res) => res.json())
-      .then(console.log);
+    user.login(email, password)
   }
   return (
     <>

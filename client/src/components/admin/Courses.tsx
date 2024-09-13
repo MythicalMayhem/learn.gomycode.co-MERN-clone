@@ -1,21 +1,24 @@
 import { useEffect, useState } from "react"
 import { Course } from "./AddCourse"
 import { CourseCard } from "../courses/courseCard"
+import { userStore } from "../../lib/userStore"
 
 function Courses() {
 	const [courses, setCourses] = useState<Array<Course>>([])
+	const user = userStore()
 	useEffect(() => {
 		fetch("http://127.0.0.1:3001/courses")
 			.then((res) => res.json())
 			.then((res) => {
-				console.log()
 				setCourses(res)
 			})
 	}, [])
 	function handleEnroll(id: string) {
+		console.log(user);
+		
 		fetch('http://127.0.0.1:3001/enroll', {
 			headers: {
-				"userid": 'cb247011-0853-4df6-88bd-f706aa784c42',
+				"userid": user.currentUser.id,
 				"Content-Type": 'application/json'
 			},
 			body: JSON.stringify({ id }),

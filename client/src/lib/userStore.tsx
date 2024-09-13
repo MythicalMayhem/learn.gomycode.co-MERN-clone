@@ -1,16 +1,25 @@
 import { create } from "zustand";
 
-export const userStore = create((set) => ({
+interface user {
+  currentUser: {
+    id: string
+    progress: number
+  } | any
+  login: (email: string, password: string) => void,
+  logout: () => void,
+}
+export const userStore = create<user>((set) => ({
   currentUser: null,
   logout: () => set({ currentUser: null }),
   login: (email: string, password: string) => {
-    fetch("http://127.0.0.1:3001/login", {
+    fetch("http://127.0.0.1:3001/signin", {
       method: "GET",
-      body: JSON.stringify({
+      headers: {
         email,
-        password,
-      }),
-    });
+        password
+      },
+    })
+      .then(res => res.json())
+      .then(res => res.success ? set({ currentUser: res.data }) : null);
   },
-  
 }));
