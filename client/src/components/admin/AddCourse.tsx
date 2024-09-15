@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Page as PageComponent } from "./Page";
-import React from "react";
+import { Page as PageComponent } from "./Page"; 
 
 const newPage = (type: string, pageId: string): Page => {
   if (type === "order") {
