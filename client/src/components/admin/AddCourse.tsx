@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Page as PageComponent } from "./Page"; 
+import { Page as PageComponent } from "./Page";
 
 const newPage = (type: string, pageId: string): Page => {
   if (type === "order") {
     return {
+      name: "page name",
       type: type,
       id: pageId,
       content: {
@@ -16,6 +17,7 @@ const newPage = (type: string, pageId: string): Page => {
   }
   if (type === "quiz") {
     return {
+      name: "page name",
       id: pageId,
       type: type,
       content: {
@@ -27,6 +29,7 @@ const newPage = (type: string, pageId: string): Page => {
     };
   }
   return {
+    name: "page name",
     type: "static",
     id: pageId,
     content: {
@@ -42,9 +45,10 @@ function createUrl(obj: File) {
 export interface Page {
   id: string;
   type: "static" | "quiz" | "order";
+  name: string
   content: {
-    ["paragraph"]: string;
     ["title"]: string;
+    ["paragraph"]: string;
     ["slideshow"]?: Array<any>;
     ["options"]?: Array<string>;
     ["scattered"]?: Array<number>;
@@ -54,7 +58,7 @@ export interface Page {
 
 export interface Checkpoint {
   name: string;
-  pages: { [id: string]: Page };
+  pages: { [id: string]: (Page | undefined) };
 }
 
 export interface Checkpoints {
@@ -82,6 +86,7 @@ export function AddCourse() {
         name: checkpointName,
         pages: {
           [pid]: {
+            name: "page name",
             id: pid,
             type: "static",
             content: {
@@ -124,35 +129,61 @@ export function AddCourse() {
           ...checkpoint.pages,
           [pageId]: {
             ...page,
-            content: { ...page["content"], [field]: value },
+            content: { ...page?.content, [field]: value },
           },
         },
       },
-    });
+    } as Checkpoints);
   };
 
   const page = (checkpointId: string, pageId: string) => {
     const checkpoint = checkpoints[checkpointId];
+    if (!checkpoint.pages[pageId]) return
     return (
       <PageComponent
         key={pageId}
         checkpointId={checkpointId}
         update={update}
-        page={checkpoint.pages[pageId]}
+        page={checkpoint.pages[pageId] as Page}
         changeType={(type: string) => {
           handleTypeChange(checkpointId, type, pageId);
         }}
       />
     );
   };
+  function addPage(checkpointId: string) {
+    const k = uuidv4()
+    setCheckpoints({
+      ...checkpoints, [checkpointId]: {
+        ...checkpoints[checkpointId],
+        pages: { ...checkpoints[checkpointId].pages, [k]: newPage("static", k) }
+      }
+    })
+  }
+  const deletePage = (checkpointId: string, pageId: string) => setCheckpoints({
+    ...checkpoints, [checkpointId]: {
+      ...checkpoints[checkpointId],
+      pages: { ...checkpoints[checkpointId].pages, [pageId]: undefined }
+    }
+  })
 
+  const deleteCheckPoint = (checkpointId: string) => setCheckpoints({
+    ...checkpoints, [checkpointId]: null
+  } as Checkpoints)
   const checkpoint = (checkpointId: string, checkpointIndex: any) => {
+    if (!checkpoints[checkpointId]) return <></>
     return (
       <div key={checkpointIndex}>
         {checkpoints[checkpointId].name}
         {Object.keys(checkpoints[checkpointId].pages).map((pageId: string) =>
-          page(checkpointId, pageId)
+          checkpoints[checkpointId].pages[pageId]
+          && <>
+            {page(checkpointId, pageId)}
+            <button onClick={() => deletePage(checkpointId, pageId)}>Delete Page</button>
+          </>
         )}
+        <button onClick={() => addPage(checkpointId)}>Add Page</button><br />
+        <button onClick={() => deleteCheckPoint(checkpointId)}>Delete Checkpoint</button>
       </div>
     );
   };
@@ -197,7 +228,7 @@ export function AddCourse() {
       <br />
       <button onClick={addCheckPoint}>Add Checkpoint</button> <br />
       checkpoints :{Object.keys(checkpoints).map(checkpoint)}
-      <pre>{JSON.stringify(checkpoints, undefined, "  ")}</pre>
+      <pre>{JSON.stringify(checkpoints, null, "  ")}</pre>
     </>
   );
 }

@@ -17,6 +17,7 @@ export interface pagePropType {
 }
 
 export function Page({ checkpointId, page, changeType, update }: pagePropType) {
+
   if (page.type === "order") {
     return (
       <OrderPage
