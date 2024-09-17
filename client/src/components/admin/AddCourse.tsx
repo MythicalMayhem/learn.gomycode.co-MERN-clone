@@ -141,61 +141,43 @@ export function AddCourse() {
     if (!checkpoint.pages[pageId]) return
     return (
       <PageComponent
-        key={pageId}
         checkpointId={checkpointId}
         update={update}
         page={checkpoint.pages[pageId] as Page}
-        changeType={(type: string) => {
-          handleTypeChange(checkpointId, type, pageId);
-        }}
+        changeType={(type: string) => handleTypeChange(checkpointId, type, pageId)}
       />
     );
   };
-  function addPage(checkpointId: string) {
-    const k = uuidv4()
-    setCheckpoints({
-      ...checkpoints, [checkpointId]: {
-        ...checkpoints[checkpointId],
-        pages: { ...checkpoints[checkpointId].pages, [k]: newPage("static", k) }
-      }
-    })
-  }
-  const deletePage = (checkpointId: string, pageId: string) => setCheckpoints({
-    ...checkpoints, [checkpointId]: {
-      ...checkpoints[checkpointId],
-      pages: { ...checkpoints[checkpointId].pages, [pageId]: undefined }
-    }
-  })
-
-  const deleteCheckPoint = (checkpointId: string) => setCheckpoints({
-    ...checkpoints, [checkpointId]: null
-  } as Checkpoints)
+  const addPage = (checkpointId: string, id: string) => setCheckpoints({ ...checkpoints, [checkpointId]: { ...checkpoints[checkpointId], pages: { ...checkpoints[checkpointId].pages, [id]: newPage("static", id) } } })
+  const deletePage = (checkpointId: string, pageId: string) => setCheckpoints({ ...checkpoints, [checkpointId]: { ...checkpoints[checkpointId], pages: { ...checkpoints[checkpointId].pages, [pageId]: undefined } } })
+  const deleteCheckPoint = (checkpointId: string) => setCheckpoints({ ...checkpoints, [checkpointId]: undefined } as Checkpoints)
   const checkpoint = (checkpointId: string, checkpointIndex: any) => {
     if (!checkpoints[checkpointId]) return <></>
     return (
-      <div key={checkpointIndex}>
+      <>
         {checkpoints[checkpointId].name}
-        {Object.keys(checkpoints[checkpointId].pages).map((pageId: string) =>
-          checkpoints[checkpointId].pages[pageId]
-          && <>
-            {page(checkpointId, pageId)}
-            <button onClick={() => deletePage(checkpointId, pageId)}>Delete Page</button>
-          </>
-        )}
-        <button onClick={() => addPage(checkpointId)}>Add Page</button><br />
+        <ul>
+          {Object.keys(checkpoints[checkpointId].pages).map((pageId: string, index: number) =>
+            checkpoints[checkpointId].pages[pageId]
+            && <li key={index}>
+              {page(checkpointId, pageId)}
+              <button onClick={() => deletePage(checkpointId, pageId)}>Delete Page</button>
+            </li>
+          )}
+        </ul>
+        <button onClick={() => addPage(checkpointId, uuidv4())}>Add Page</button><br />
         <button onClick={() => deleteCheckPoint(checkpointId)}>Delete Checkpoint</button>
-      </div>
+      </>
     );
   };
-  const handleSubmit = (data: Checkpoints) => {
+  const handleSubmit = (data: Checkpoints) =>
     fetch("http://127.0.0.1:3001/AddCourse", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ checkpoints, id: uuidv4(), name: courseName }),
-    })
-      .then((res) => res.json())
+    }).then(res => res.json())
       .then(console.log);
-  };
+
   return (
     <>
       <button onClick={() => handleSubmit(checkpoints)}> SAVE</button>
@@ -227,7 +209,11 @@ export function AddCourse() {
       />
       <br />
       <button onClick={addCheckPoint}>Add Checkpoint</button> <br />
-      checkpoints :{Object.keys(checkpoints).map(checkpoint)}
+      checkpoints :
+      <ul>
+        {Object.keys(checkpoints).map((checkpointid, index) =>
+          checkpoints[checkpointid] && <li key={index}> {checkpoint(checkpointid, index)} </li>)}
+      </ul>
       <pre>{JSON.stringify(checkpoints, null, "  ")}</pre>
     </>
   );
