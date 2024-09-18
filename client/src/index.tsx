@@ -15,17 +15,18 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 
-  <React.StrictMode>
+  
     <Router>
       <Navigations />
       <Routes>
-        <Route path="/"         element={<Home />}     />
-        <Route path="/auth"     element={<Auth />}     />
-        <Route path="/admin"    element={<Admin />}    />
-        <Route path="/course"   element={<Course />}   />
-        <Route path="/courses"  element={<Courses />}  />
-        <Route path="/enrolled" element={<Enrolled />} />
+        <Route path = "/"         element = { <Home /> }     />
+        <Route path = "/auth"     element = { <Auth /> }     />
+        <Route path = "/admin"    element = { <Admin /> }    />
+        <Route path = "/course"   element = { <Course /> }   />
+        <Route path = "/courses"  element = { <Courses /> }  />
+        <Route path = "/enrolled" element = { <Enrolled /> } />
       </Routes>
     </Router>
-  </React.StrictMode>
+    
+    
 );

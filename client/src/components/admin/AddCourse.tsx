@@ -191,7 +191,7 @@ export function AddCourse() {
         onChange={(e) => setCourseName(e.target.value)}
       />
       <br />
-      course image :{" "}
+      course image :
       <input
         type="file"
         name="course-img"

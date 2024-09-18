@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { courseStore } from "../lib/courseStore";
 
 function Course() {
     const [params] = useSearchParams()
-    const [courseData, setCourseData] = useState()
-    useEffect(() => {
-        // const aborter = new AbortController()
+    const course = courseStore()
 
+
+    useEffect(() => {
         fetch("http://127.0.0.1:3001/getCourse", {
             method: "GET",
             headers: {
@@ -17,15 +18,25 @@ function Course() {
             }
         })
             .then(res => res.json())
-            .then(res => setCourseData(res))
-    }, [params])
-    console.log(courseData);
+            .then(res => {
+                console.log(res);
+                course.setCourseData(res.data)
+            })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (<>
-        <h1>E</h1>
-        <ul>
-            {params.get('id')}
-        </ul>
+        <h1>{course?.courseData?.name}</h1>
+        <strong>CheckPoints</strong>{course?.currentCheckPoint   + " / " + course?.maxCheckPointIndex} <br />
+        <em>Page  = </em>{course?.currentPage + 1 + " / " + course?.maxPageIndex}
+
+
+        <button onClick={() => course?.nextPage()}>NEXT page</button>
+
+        <pre>
+            {JSON.stringify(course?.courseData?.checkpoints[Object.keys(course?.courseData?.checkpoints)[course.currentCheckPoint - 1]])}
+
+        </pre>
     </>);
 }
 
