@@ -5,7 +5,7 @@ import Admin from "./components/admin/Admin";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Auth from "./components/auth/Auth";
 import Enrolled from "./components/Enrolled";
-import Courses from "./components/Courses";
+import Courses from "./components/AllCourses";
 import Course from "./components/Course";
 
 import Navigations from "./lib/Navigations";
