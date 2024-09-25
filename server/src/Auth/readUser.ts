@@ -1,20 +1,20 @@
-import { MongoClient } from "mongodb";
+import { MongoClient } from "mongodb"
 
-export async function getStudentByEmail(client: MongoClient, email: string) {
-  try {
-    await client.connect();
-    const db = client.db("users");
-    const coll = db.collection("students");
-    const cursor = coll.find({ email: email });
-    const data: any = [];
-    for await (const item of cursor) {
-      if (item) data.push(item);
-    }
+export async function getStudentByEmail(
+	client: MongoClient,
+	email: string,
+	password: string
+) {
+	try {
+		await client.connect()
+		const db = client.db("users")
+		const coll = db.collection("students")
+		const cursor = await coll.findOne({ email, password })
 
-    return { success: true, data: data };
-  } catch (error: any) {
-    return { success: false, data: null };
-  } finally {
-    client.close();
-  }
+		return { success: true, data: cursor }
+	} catch (error: any) {
+		return { success: false, data: "user not found" }
+	} finally {
+		client.close()
+	}
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import './styles/default.css'
 import ReactDOM from "react-dom/client";
 import Home from "./components/Home";
 import Admin from "./components/admin/Admin";
