@@ -1,5 +1,7 @@
 * {
 	box-sizing: border-box; 
+	color:  white;
+	font-family: Inter, sans-serif !important;
 }
 html,
 body,
@@ -12,5 +14,7 @@ body,
 #root {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	flex-wrap: nowrap;
-}
+	background-color: #1d1d1d;
+} 
