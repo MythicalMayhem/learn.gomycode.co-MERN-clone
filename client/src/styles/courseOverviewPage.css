@@ -1,0 +1,96 @@
+.overview-page {
+	margin-top: 2.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	height: 100%;
+	width: 100%;
+}
+
+.overview-page .aside {
+	background-color: #212121;
+	padding: 3rem 1.5rem;
+	width: 20vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+    border: 1px solid #404040;
+    border-radius: 20px; 
+	flex-wrap: nowrap;
+ 
+	.course-name {
+		p {
+			display: block;
+			width: fit-content;
+		}
+	}
+	img {
+		transform: rotate(-8.5deg);
+	}
+}
+.overview-page .checkpoints-list {
+	padding-left: 17.5px;
+	padding-right: 17.5px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 16px;
+	width: fit-content;
+	.checkpoint-bar {
+		gap: 16px;
+		width: 35vw;
+		.name {
+			color: #cacaca;
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: normal;
+			text-transform: capitalize;
+			margin: 0;
+ 
+		}
+		.score,
+		.score span {
+			font-size: 12px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 18px;
+			margin: 4px 0 0;
+			color: #676767;
+			span {
+				font-size: 12px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 18px;
+				margin: 4px 0 0;
+				color: #cacaca;
+			}
+		}
+		.scoremark {
+			width: 14;
+			height: 13;
+			fill: none;
+			path {
+				fill: rgb(130, 138, 146);
+			}
+		}
+		svg {
+			height: 100%;
+		}
+		padding: 18px 26px;
+		background: #252525;
+		border: 1px solid #404040;
+		border-radius: 20px;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-content: flex-start;
+		justify-items: flex-start;
+		align-items: flex-start;
+		height: 76px;
+	}
+}

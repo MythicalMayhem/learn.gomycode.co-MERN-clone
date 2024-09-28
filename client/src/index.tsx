@@ -9,6 +9,8 @@ import Courses from "./components/AllCourses";
 import Course from "./components/Course";
 
 import Navigations from "./lib/Navigations";
+import CourseOverView from './components/course/overview/mainoverview';
+import CoursePager from './components/course/page';
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -20,9 +22,10 @@ root.render(
       <Navigations />
       <Routes>
         <Route path = "/"         element = { <Home /> }     />
+        <Route path = "/course"   element = { <CoursePager /> }   />
+
         <Route path = "/auth"     element = { <Auth /> }     />
         <Route path = "/admin"    element = { <Admin /> }    />
-        <Route path = "/course"   element = { <Course /> }   />
         <Route path = "/courses"  element = { <Courses /> }  />
         <Route path = "/enrolled" element = { <Enrolled /> } />
       </Routes>
