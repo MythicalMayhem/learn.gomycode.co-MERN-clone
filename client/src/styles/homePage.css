@@ -6,6 +6,7 @@
 	flex-wrap: nowrap;
 }
 .home-page-course-card {
+	cursor: pointer;
 	background-color: #212121;
 	border: 1px solid #404040;
 	border-radius: 20px;

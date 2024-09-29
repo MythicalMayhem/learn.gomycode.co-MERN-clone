@@ -1,7 +1,7 @@
-import '../styles/homePage.css'
-import { userStore } from "../lib/userStore";
-import NavBar from "./navbar";
-import HomePageCourseCard from "./courses/HomePageCourseCard";
+import '../../styles/homePage.css'
+import { userStore } from "../../lib/userStore";
+import NavBar from "../navbar";
+import HomePageCourseCard from "./HomePageCourseCard";
 
 function App() {
   const user = userStore()

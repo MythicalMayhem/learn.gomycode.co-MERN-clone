@@ -16,11 +16,11 @@ function HomePageCourseCard(props?: {
                     <p className="course-name">{props?.name} {props?.progress.completed && <CheckMark />}</p>
                     <p className="dates"><span className="from"><Unlocked /><span>{props?.dates.from}</span></span>
                         <span className="to"> <Locked /><span>{props?.dates.to}</span></span></p>
-                    <Link style={{ textDecoration: 'none' }} className="apercu" to={"/course?id=" + props?.course_id}><button type="button"  ><span>Aperçu du Cours</span><svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg" className="to"><path d="M1.93359 1.15625L5.84375 5.3125C5.95312 5.44922 6.03516 5.61328 6.03516 5.75C6.03516 5.91406 5.95312 6.07812 5.84375 6.21484L1.93359 10.3711C1.6875 10.6445 1.27734 10.6445 1.00391 10.3984C0.730469 10.1523 0.730469 9.74219 0.976562 9.46875L4.47656 5.75L0.976562 2.05859C0.730469 1.78516 0.730469 1.375 1.00391 1.12891C1.27734 0.882812 1.6875 0.882812 1.93359 1.15625Z" fill="#176FFF"></path></svg></button></Link>
+                    <Link style={{ textDecoration: 'none' }} className="apercu" to={"/course?page=overview&id=" + props?.course_id}><button type="button"  ><span>Aperçu du Cours</span><svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg" className="to"><path d="M1.93359 1.15625L5.84375 5.3125C5.95312 5.44922 6.03516 5.61328 6.03516 5.75C6.03516 5.91406 5.95312 6.07812 5.84375 6.21484L1.93359 10.3711C1.6875 10.6445 1.27734 10.6445 1.00391 10.3984C0.730469 10.1523 0.730469 9.74219 0.976562 9.46875L4.47656 5.75L0.976562 2.05859C0.730469 1.78516 0.730469 1.375 1.00391 1.12891C1.27734 0.882812 1.6875 0.882812 1.93359 1.15625Z" fill="#176FFF"></path></svg></button></Link>
                 </div>
             </div>
             <div className="certif-or-continue">
-                {props?.progress.completed ? <img src="images/certif.png" alt='certif' /> : <Link to={"/course?id=" + props?.course_id + "&checkpoint=" + props?.progress.pageId}> Reprendre </Link>}
+                {props?.progress.completed ? <img src="images/certif.png" alt='certif' /> : <Link to={"/course?page=overview&id=" + props?.course_id + "&checkpoint=" + props?.progress.pageId}> Reprendre </Link>}
             </div>
         </div>
     );

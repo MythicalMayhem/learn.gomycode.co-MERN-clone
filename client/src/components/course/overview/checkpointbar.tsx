@@ -6,10 +6,10 @@ function CheckpointBar(props: { score?: number, id: string }) {
     return (
         <div className="checkpoint-bar">
             <CheckMark />
-            <p className="name">{name}
+            <div className="name">{name}
                 <br />
                 <div className="score"> <Score /> {!((props.score || 0) > 0) ? <>score : <span>{props.score}</span></> : "in progress"}</div>
-            </p>
+            </div>
 
         </div>
     );

@@ -15,10 +15,10 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-    border: 1px solid #404040;
-    border-radius: 20px; 
+	border: 1px solid #404040;
+	border-radius: 20px;
 	flex-wrap: nowrap;
- 
+
 	.course-name {
 		p {
 			display: block;
@@ -40,6 +40,7 @@
 	gap: 16px;
 	width: fit-content;
 	.checkpoint-bar {
+		cursor: pointer;
 		gap: 16px;
 		width: 35vw;
 		.name {
@@ -50,7 +51,6 @@
 			line-height: normal;
 			text-transform: capitalize;
 			margin: 0;
- 
 		}
 		.score,
 		.score span {

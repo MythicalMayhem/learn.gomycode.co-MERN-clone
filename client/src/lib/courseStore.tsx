@@ -1,45 +1,49 @@
 import { create } from "zustand"
-import { Checkpoints } from "../components/admin/AddCourse"
+
+enum pageType { 'static', 'order', 'quiz' }
+interface page {
+    title: string
+    type: pageType
+    content: {
+        desc?: string
+        slideshow?: string[]
+
+        full?: string
+        pool?: number[]
+
+        options?: string[]
+        correct?: number
+    }
+}
+
+interface chapter {
+    id: string
+    name: string
+    pages: page[]
+}
+
+interface checkpoint {
+    id: string
+    name: string
+    chapters: { [id: string]: chapter }
+}
 
 interface course {
-    checkpoints: Checkpoints
+    checkpoints: { [id: string]: checkpoint }
     id: string,
     name: string
-}
-interface data {
-    courseData: course | null
-    setCourseData: (data: course) => void
-    nextPage: () => void
-    maxPageIndex: number,
-    maxCheckPointIndex: number,
-    currentPage: number,
-    currentCheckPoint: number,
+    image?: any
 }
 
-export const courseStore = create<data>((set) => (
+interface CourseStorage {
+    courseData: course | null
+    setCourseData: (data: course) => void
+}
+
+export const courseStore = create<CourseStorage>((set) => (
     {
         courseData: null,
-        currentPage: 0,
-        currentCheckPoint: 1,
-        maxCheckPointIndex: 0,
-        maxPageIndex: 0,
         setCourseData: (data: course) => {
-            set({
-                courseData: data,
-                maxCheckPointIndex: Object.keys(data.checkpoints).length,
-                maxPageIndex: Object.keys(data.checkpoints[Object.keys(data.checkpoints)[0]].pages).length,
-            })
-        },
-        nextPage: () => {
-            set((state: data) => {
-                if ((state.maxCheckPointIndex <= state.currentCheckPoint) && (state.currentPage + 1 >= state.maxPageIndex)) return {}
-                return (state.currentPage + 1 >= state.maxPageIndex)
-                    ? {
-                        currentPage: 0,
-                        currentCheckPoint: state.currentCheckPoint + 1
-                    } : { currentPage: state.currentPage + 1, }
-            })
-            console.log("eeeeeaze");
-        }
+            set({ courseData: data })},
     })
 )
