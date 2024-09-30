@@ -13,7 +13,7 @@ function App() {
       <main className='course-list'>
 
         <HomePageCourseCard
-          course_id="string" img="https://imgur.com/NTJGqjU.png" name="Introduction to Artificial Intelligence"
+          course_id="123456789" img="https://imgur.com/NTJGqjU.png" name="Introduction to Artificial Intelligence"
           dates={{ from: "23 octobre 2021", to: "08 janvier 2022" }} progress={{ percent: 5, checkpointId: "checkpointId", pageId: "pageId", completed: true, desc: "Tunis Lac Hacker Space" }}
         />
       </main>

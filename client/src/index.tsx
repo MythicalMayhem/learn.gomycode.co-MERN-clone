@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 import Navigations from "./lib/Navigations"; 
-import CoursePager from './components/course/page';
+import CoursePager from './components/course/PageRouter';
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
