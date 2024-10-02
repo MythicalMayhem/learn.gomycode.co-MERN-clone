@@ -52,7 +52,7 @@ export const courseStore = create<CourseStore>((set) => (
         advance: () => set((state: CourseStore) => {
             if (!state.courseData) return {}
             const cw = { ...state.currentWindow }
-            cw.pageIndex++ 
+            cw.pageIndex++
             if (cw.pageIndex >= state.courseData?.checkpoints[cw.checkpointIndex].chapters[cw.chapterIndex].pages.length) {
                 cw.pageIndex = 0
                 cw.chapterIndex += 1
@@ -63,35 +63,32 @@ export const courseStore = create<CourseStore>((set) => (
                 cw.checkpointIndex += 1
             }
             if (cw.checkpointIndex >= state.courseData?.checkpoints.length) {
-                cw.pageIndex = 0
-                cw.chapterIndex = 0
                 cw.checkpointIndex = state.courseData?.checkpoints.length - 1
                 console.log('course is over');
-            } 
+            }
             console.log(cw);
-            
-            return {currentWindow:cw}
+
+            return { currentWindow: cw }
         }),
         fallback: () => set((state: CourseStore) => {
             if (!state.courseData) return {}
             const cw = { ...state.currentWindow }
             cw.pageIndex--
             if (cw.pageIndex < 0) {
-                cw.chapterIndex = Math.max(cw.chapterIndex - 1, 0)
-                cw.pageIndex = state.courseData.checkpoints[cw.checkpointIndex].chapters[cw.chapterIndex].pages.length - 1
+                cw.chapterIndex = cw.chapterIndex - 1
+                cw.pageIndex = state.courseData.checkpoints[Math.max(cw.checkpointIndex, 0)].chapters[Math.max(cw.chapterIndex, 0)].pages.length - 1
             }
             if (cw.chapterIndex < 0) {
-                cw.checkpointIndex = Math.max(cw.checkpointIndex - 1, 0)
-                cw.chapterIndex = state.courseData.checkpoints[cw.checkpointIndex].chapters.length - 1
-                cw.pageIndex = state.courseData.checkpoints[cw.checkpointIndex].chapters[cw.chapterIndex].pages.length - 1
+                cw.checkpointIndex = cw.checkpointIndex - 1
+                cw.chapterIndex = state.courseData.checkpoints[Math.max(cw.checkpointIndex, 0)].chapters.length - 1
+                cw.pageIndex = state.courseData.checkpoints[Math.max(cw.checkpointIndex, 0)].chapters[Math.max(cw.chapterIndex, 0)].pages.length - 1
             }
             if (cw.checkpointIndex < 0) {
-                cw.checkpointIndex = Math.max(cw.checkpointIndex - 1, 0)
+                cw.checkpointIndex = 0
                 cw.chapterIndex = 0
                 cw.pageIndex = 0
-                console.log('course begin');
             }
-            return {currentWindow:cw}
+            return { currentWindow: cw }
         }),
     })
 )
