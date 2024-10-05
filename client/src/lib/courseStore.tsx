@@ -1,9 +1,8 @@
 import { create } from "zustand"
-
-enum pageType { 'static', 'order', 'quiz' }
-interface page {
+ 
+export interface page {
     title: string
-    type: pageType
+    type: 'static' |'order' |'quiz' 
     content: {
         desc?: string
         slideshow?: string[]
@@ -64,10 +63,7 @@ export const courseStore = create<CourseStore>((set) => (
             }
             if (cw.checkpointIndex >= state.courseData?.checkpoints.length) {
                 cw.checkpointIndex = state.courseData?.checkpoints.length - 1
-                console.log('course is over');
             }
-            console.log(cw);
-
             return { currentWindow: cw }
         }),
         fallback: () => set((state: CourseStore) => {
