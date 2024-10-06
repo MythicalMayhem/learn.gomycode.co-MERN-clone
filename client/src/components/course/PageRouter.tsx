@@ -1,8 +1,10 @@
+import '../../styles/course.css'
 import { useSearchParams } from "react-router-dom";
 import CourseOverView from "./overview/mainoverview";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { courseStore } from "../../lib/courseStore";
 import MyCourse from "./course/mycourse";
+import SideBar from "./sideBar";
 
 function CoursePager() {
     const [params] = useSearchParams()
@@ -33,11 +35,11 @@ function CoursePager() {
     console.log(course);
     switch (page) {
         case 'overview':
-            return <CourseOverView />
+            return <div className='learn'><SideBar /><CourseOverView /></div>
         case "learn":
-            return <><MyCourse /></>
+            return <div className='learn'><SideBar /><MyCourse /></div>
         default:
-            return <>Page Not Found 044</>;
+            return <div className='learn'><SideBar />Page Not Found 044</div>;
     }
 }
 
