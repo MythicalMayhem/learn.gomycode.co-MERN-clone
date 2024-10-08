@@ -10,11 +10,12 @@ body,
 	width: 100%;
 	padding: 0;
 	margin: 0;
+	background-color: #1d1d1d;
 }
 #root {
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	flex-wrap: nowrap;
-	background-color: #1d1d1d;
 } 

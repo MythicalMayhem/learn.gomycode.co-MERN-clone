@@ -5,7 +5,7 @@ import Home from "./components/dashboard/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
-import Navigations from "./lib/Navigations"; 
+import Navigations from "./lib/Navigations";
 import CoursePager from './components/course/PageRouter';
 
 const root = ReactDOM.createRoot(

@@ -1,0 +1,15 @@
+.sidebar { 
+  background-color: black;
+  width: min(10vh,10%);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 2rem;
+  button {
+    max-height: 10vh;
+    flex-grow: 1;
+    width: 100%;
+  }
+}

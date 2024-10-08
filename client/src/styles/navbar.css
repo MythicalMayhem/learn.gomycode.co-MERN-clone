@@ -3,16 +3,17 @@
 .navigation-bar {
 	position: sticky;
 	top: 0;
+
 	width: 100vw;
-	align-items: center;
+	height: 64px;
+	padding: 25px 30px;
+	background-color: #333;
 	background: #212121;
 	border-bottom: 1px solid #505050;
 	box-sizing: border-box;
-	height: 64px;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
-	padding: 25px 30px;
+	justify-content: space-between;
 	font-family: Inter, sans-serif !important;
 	color: #9aa7b4 !important;
 	.dropdown_icon {
@@ -22,10 +23,10 @@
 	.right,
 	.left {
 		display: flex;
-		justify-content: flex-end;
-		align-items: flex-end;
 		flex-wrap: nowrap;
 		flex-direction: row;
+		align-items: flex-end;
+		justify-content: flex-end;
 	}
 	.left {
 		.links {
@@ -89,7 +90,7 @@
 				cursor: pointer;
 				transition: all 0.2s;
 				user-select: none;
-                background-color: #7badfd;
+				background-color: #7badfd;
 				.circle {
 					align-items: center;
 					background-color: #176fff;

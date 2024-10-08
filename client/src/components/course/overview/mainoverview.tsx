@@ -6,14 +6,12 @@ import CheckpointBar from "./checkpointbar";
 import { courseStore } from '../../../lib/courseStore';
 
 import Header from "./header";
-import Aside from "./aside";
-import NavBar from '../../navbar';
+import Aside from "./aside"; 
 
 function CourseOverView() {
     const course = courseStore()
     return (
         <>
-            <NavBar />
             <div className="overview-page">
                 <Aside />
                 <div className="checkpoints-list">

@@ -5,6 +5,11 @@ import { useEffect } from "react";
 import { courseStore } from "../../lib/courseStore";
 import MyCourse from "./course/mycourse";
 import SideBar from "./sideBar";
+import NavBar from '../navbar';
+import Saved from './saved/saved';
+import CheckPointList from './checkpoint/checkpointList';
+import OneToOne from './oneToOne/oneToOne';
+import SkillCheck from './skillcheck/skillCheck';
 
 function CoursePager() {
     const [params] = useSearchParams()
@@ -32,14 +37,22 @@ function CoursePager() {
     }, [id])
 
 
-    console.log(course);
+
     switch (page) {
         case 'overview':
-            return <div className='learn'><SideBar /><CourseOverView /></div>
+            return <><NavBar /><div className='learn'><SideBar /><CourseOverView /></div></>
         case "learn":
-            return <div className='learn'><SideBar /><MyCourse /></div>
+            return <><NavBar /><div className='learn'><SideBar /><MyCourse /></div></>
+        case "saved":
+            return <><NavBar /><div className='learn'><SideBar /><Saved /></div></>
+        case "checkpoints":
+            return <><NavBar /><div className='learn'><SideBar /><CheckPointList /></div></>
+        case "onetoone":
+            return <><NavBar /><div className='learn'><SideBar /><OneToOne /></div></>
+        case "skillcheck":
+            return <><NavBar /><div className='learn'><SideBar /><SkillCheck /></div></>
         default:
-            return <div className='learn'><SideBar />Page Not Found 044</div>;
+            return <><NavBar /><div className='learn'><SideBar />Page Not Found 044</div></>;
     }
 }
 
