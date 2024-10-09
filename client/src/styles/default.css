@@ -3,9 +3,12 @@
 	color:  white;
 	font-family: Inter, sans-serif !important;
 }
+::-webkit-scrollbar {
+	width: 0;
+}
 html,
 body,
-#root {
+#root { 
 	height: 100%;
 	width: 100%;
 	padding: 0;

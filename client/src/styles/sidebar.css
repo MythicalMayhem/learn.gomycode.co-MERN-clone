@@ -1,15 +1,71 @@
-.sidebar { 
-  background-color: black;
-  width: min(10vh,10%);
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  gap: 1rem;
-  padding-top: 2rem;
-  button {
-    max-height: 10vh;
-    flex-grow: 1;
-    width: 100%;
-  }
+.sidebar {
+	background-color: black;
+	width: min(10vh, 10%);
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+	gap: 1rem;
+	padding-top: 2rem;
+	button {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		align-self: center;
+		width: 85%;
+		max-height: 10vh;
+		border-radius: 8px;
+		font-size: 10px;
+		cursor: pointer;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 18px;
+		width: 100%;
+		border: none;
+		background: transparent;
+		height: 48px;
+
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		svg {
+			height: 18px;
+			width: 18px;
+			path {
+				fill: #9aa7b4;
+			}
+		}
+	}
+	.selected {
+		background: #649dff1b;
+		border-right: 2px solid #87b4ff;
+		svg g path {
+			fill: #87b4ff;
+		}
+	}
+	.last {
+		justify-self: flex-end;
+		cursor: pointer;
+		margin-top: 38.5px;
+		svg {
+			width: 14;
+			height: 18;
+			fill: none;
+		}
+	}
+	background: #1d1d1d;
+	border-right: 1px solid #404040;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: 36px;
+	height: 100vh;
+	min-height: -webkit-fill-available;
+	overflow: auto;
+	padding-bottom: 40px;
+	padding-top: 20px;
+	position: relative;
+	position: fixed;
+	width: 72px;
+	z-index: 1000;
 }

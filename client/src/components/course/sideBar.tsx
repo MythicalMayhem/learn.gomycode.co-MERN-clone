@@ -14,12 +14,13 @@ function SideBar() {
 
     return (
         <div className="sidebar">
-            <button onClick={() => setParams({ id: params.get('id') || '', page: 'overview', })}><OverView /></button>
+            <button className='selected' onClick={() => setParams({ id: params.get('id') || '', page: 'overview', })}><OverView /></button>
             <button onClick={() => setParams({ id: params.get('id') || '', page: 'learn', })}> <Course /></button >
             <button onClick={() => setParams({ id: params.get('id') || '', page: 'saved', })}><Saved /></button>
             <button onClick={() => setParams({ id: params.get('id') || '', page: 'checkpoints', })}><Checkpoints /></button>
             <button onClick={() => setParams({ id: params.get('id') || '', page: 'onetoone', })}><OneToOne /></button>
             <button onClick={() => setParams({ id: params.get('id') || '', page: 'skillcheck', })}><SkillCheck />  </button>
+            <div className="last"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none" className="last"><path d="M0 5.25V14.25C0 16.3177 1.5701 18 3.5 18H10.5C12.4299 18 14 16.3177 14 14.25V5.25H0ZM7 13.5H4.2C3.8136 13.5 3.5 13.1648 3.5 12.75C3.5 12.3352 3.8136 12 4.2 12H7C7.3864 12 7.7 12.3352 7.7 12.75C7.7 13.1648 7.3864 13.5 7 13.5ZM9.8 9.75H4.2C3.8136 9.75 3.5 9.41475 3.5 9C3.5 8.58525 3.8136 8.25 4.2 8.25H9.8C10.1864 8.25 10.5 8.58525 10.5 9C10.5 9.41475 10.1864 9.75 9.8 9.75ZM14 3.75H0C0 1.68225 1.5701 0 3.5 0H10.5C12.4299 0 14 1.68225 14 3.75Z" fill="#176FFF"></path></svg></div>
         </div >
     );
 }
