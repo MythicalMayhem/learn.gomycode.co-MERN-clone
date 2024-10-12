@@ -9,15 +9,20 @@ import { readAllCourses } from "./Courses/readAllCourses"
 import { createCourse } from "./Courses/createCourse"
 import { getStudentByEmail } from "./Auth/readUser"
 import { createStudent } from "./Auth/createUser"
-import { enrollUser } from "./user/enroll"
 import { getCourse } from "./Courses/readCourse"
+import { enrollUser } from "./user/enroll"
 
 const app = express()
 const client = new MongoClient(process.env.MONGODB_URI || "")
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cors({ origin: "http://127.0.0.1:3000", optionsSuccessStatus: 200 }))
+app.use(
+	cors({
+		origin: ["http://127.0.0.1:3000", "http://localhost:3000"],
+		optionsSuccessStatus: 200,
+	})
+)
 app.listen(3001, () => console.log("server running on 3001"))
 
 app.get("/courses", async (req: Request, res: Response) => {
@@ -72,13 +77,9 @@ app.post("/enroll", (req: Request, res: Response) => {
 
 	if (!userid) return res.status(405)
 	enrollUser(client, userid as string, courseid)
-
 })
 
 app.get("/getCourse", async (req: Request, res: Response) => {
-	 
-	console.log('EEE');
-	
 	if (!req.headers.courseid)
 		return res.send({ success: false, data: { error: "invalid data" } })
 	res.send(await getCourse(client, String(req.headers.courseid)))

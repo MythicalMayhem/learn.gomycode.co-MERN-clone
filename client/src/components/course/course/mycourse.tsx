@@ -3,12 +3,17 @@ import { courseStore } from "../../../lib/courseStore";
 import Order from "./orderPage";
 import Quiz from "./quizPage";
 import Static from "./staticPage";
+import { userStore } from '../../../lib/userStore';
 
 
 function MyCourse() {
+    const user = userStore()
     const course = courseStore()
     const { checkpointIndex, chapterIndex, pageIndex } = course.currentWindow
     const page = course.courseData?.checkpoints[checkpointIndex].chapters[chapterIndex].pages[pageIndex]
+    
+
+
     return (
         <div className="my-course">
             <h1>{course.courseData?.name}</h1>
@@ -31,7 +36,7 @@ function MyCourse() {
             <div className='buttons'>
                 <button onClick={() => course.fallback()}> {'<'} </button>
                 <small>{pageIndex + 1}    / {course.courseData?.checkpoints[checkpointIndex].chapters[chapterIndex].pages.length} </small>
-                <button onClick={() => course.advance()} > {'>'}   </button>
+                <button onClick={() => course.advance(user.updateProgress)} > {'>'}   </button>
             </div>
         </div>
     );

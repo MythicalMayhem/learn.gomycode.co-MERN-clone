@@ -1,8 +1,8 @@
 import { create } from "zustand"
- 
+
 export interface page {
     title: string
-    type: 'static' |'order' |'quiz' 
+    type: 'static' | 'order' | 'quiz'
     content: {
         desc?: string
         slideshow?: string[]
@@ -38,7 +38,7 @@ interface CourseStore {
     courseData: course | null
     currentWindow: { checkpointIndex: number, chapterIndex: number, pageIndex: number },
     setCourseData: (data: course) => void
-    advance: () => void
+    advance: (updateProgress: Function) => void
     fallback: () => void
 }
 
@@ -48,13 +48,14 @@ export const courseStore = create<CourseStore>((set) => (
         currentWindow: { checkpointIndex: 0, chapterIndex: 0, pageIndex: 0 },
         courseData: null,
         setCourseData: (data: course) => set({ courseData: data }),
-        advance: () => set((state: CourseStore) => {
+        advance: (updateProgress: Function) => set((state: CourseStore) => {
             if (!state.courseData) return {}
             const cw = { ...state.currentWindow }
             cw.pageIndex++
             if (cw.pageIndex >= state.courseData?.checkpoints[cw.checkpointIndex].chapters[cw.chapterIndex].pages.length) {
                 cw.pageIndex = 0
                 cw.chapterIndex += 1
+                updateProgress(state.courseData.id, cw.checkpointIndex, cw.chapterIndex)
             }
             if (cw.chapterIndex >= state.courseData?.checkpoints[cw.checkpointIndex].chapters.length) {
                 cw.pageIndex = 0

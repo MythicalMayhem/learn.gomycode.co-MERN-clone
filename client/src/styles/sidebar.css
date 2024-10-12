@@ -55,17 +55,12 @@
 	}
 	background: #1d1d1d;
 	border-right: 1px solid #404040;
-	box-sizing: border-box;
-	display: flex;
+	box-sizing: border-box; 
 	flex-direction: column;
-	gap: 36px;
-	height: 100vh;
+	gap: 36px; 
 	min-height: -webkit-fill-available;
 	overflow: auto;
 	padding-bottom: 40px;
-	padding-top: 20px;
-	position: relative;
-	position: fixed;
-	width: 72px;
-	z-index: 1000;
+	padding-top: 20px; 
+	width: 72px; 
 }

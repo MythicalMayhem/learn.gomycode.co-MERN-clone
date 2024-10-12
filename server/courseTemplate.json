@@ -1,0 +1,223 @@
+{
+	"id": "123456789",
+	"name": "introduction to fuck you man",
+	"image": "course Image",
+	"checkpoints": [
+		{
+			"id": "1",
+			"name": "fuck you",
+			"chapters": [
+				{
+					"id": "1",
+					"name": "what",
+					"pages": [
+						{
+							"title": "what page 1",
+							"type": "static",
+							"content": {
+								"desc": "what desc lorem",
+								"slideshow": []
+							}
+						},
+						{
+							"title": "what page 2",
+							"type": "order",
+							"content": {
+								"desc": "what desc 22",
+								"slideshow": [],
+								"full": "ok unfucks u hanhar mala marja brojla",
+								"pool": [0, 2, 4]
+							}
+						},
+						{
+							"title": "what page 3",
+							"type": "quiz",
+							"content": {
+								"desc": "pick an option ",
+								"slideshow": [],
+								"options": ["option 1", "option 2", " opt 333"],
+								"correct": 0
+							}
+						}
+					]
+				},
+				{
+					"id": "2",
+					"name": "who",
+					"pages": [
+						{
+							"title": "who page 1",
+							"type": "static",
+							"content": {
+								"desc": "who desc lorem",
+								"slideshow": []
+							}
+						},
+						{
+							"title": "who page 2",
+							"type": "order",
+							"content": {
+								"desc": "who desc 22",
+								"slideshow": [],
+								"full": "wouuuuuuuuhhhh  mala marja brojla",
+								"pool": [0, 2]
+							}
+						},
+						{
+							"title": "who page 3",
+							"type": "quiz",
+							"content": {
+								"desc": "pick an option ",
+								"slideshow": [],
+								"options": ["option 1", "option 2", " opt 333"],
+								"correct": 0
+							}
+						}
+					]
+				},
+				{
+					"id": "3",
+					"name": "where",
+					"pages": [
+						{
+							"title": "where page 1",
+							"type": "static",
+							"content": {
+								"desc": "where desc lorem",
+								"slideshow": []
+							}
+						},
+						{
+							"title": "where page 2",
+							"type": "order",
+							"content": {
+								"desc": "where desc 22",
+								"slideshow": [],
+								"full": "wouuuuuuuuhhhh hanhar mala marja brojla",
+								"pool": [0, 2]
+							}
+						},
+						{
+							"title": "where page 3",
+							"type": "quiz",
+							"content": {
+								"desc": "pick an option ",
+								"slideshow": [],
+								"options": ["option 1", "option 2", " opt 333"],
+								"correct": 0
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "1",
+			"name": "ok sorry",
+			"chapters": [
+				{
+					"id": "1",
+					"name": "chapter uno",
+					"pages": [
+						{
+							"title": "c1 page uno",
+							"type": "static",
+							"content": {
+								"desc": "eeeee desc lorem",
+								"slideshow": []
+							}
+						},
+						{
+							"title": "c1 page 2",
+							"type": "order",
+							"content": {
+								"desc": "what desc 22",
+								"slideshow": [],
+								"full": "mb bro marja brojla",
+								"pool": [0, 2, 4]
+							}
+						},
+						{
+							"title": "c11 page 3",
+							"type": "quiz",
+							"content": {
+								"desc": "pick an option ",
+								"slideshow": [],
+								"options": ["opt uno", "option 2", " opt 333"],
+								"correct": 2
+							}
+						}
+					]
+				},
+				{
+					"id": "2",
+					"name": "2222",
+					"pages": [
+						{
+							"title": "who lhljknmkjn page 1",
+							"type": "static",
+							"content": {
+								"desc": "who desc lorem",
+								"slideshow": []
+							}
+						},
+						{
+							"title": "ee page 2",
+							"type": "order",
+							"content": {
+								"desc": "who desc 22",
+								"slideshow": [],
+								"full": "wouuuuuuuuhhhh  mala marja brojla",
+								"pool": [0, 2]
+							}
+						},
+						{
+							"title": "333 page 3",
+							"type": "quiz",
+							"content": {
+								"desc": "pick an option ",
+								"slideshow": [],
+								"options": ["lll 1", "option 2", " opt 333"],
+								"correct": 0
+							}
+						}
+					]
+				},
+				{
+					"id": "3",
+					"name": "where",
+					"pages": [
+						{
+							"title": "where page 1",
+							"type": "static",
+							"content": {
+								"desc": "where desc lorem",
+								"slideshow": []
+							}
+						},
+						{
+							"title": "where page 2",
+							"type": "order",
+							"content": {
+								"desc": "where desc 22",
+								"slideshow": [],
+								"full": "wouuuuuuuuhhhh hanhar mala marja brojla",
+								"pool": [0, 2]
+							}
+						},
+						{
+							"title": "where page 3",
+							"type": "quiz",
+							"content": {
+								"desc": "pick an option ",
+								"slideshow": [],
+								"options": ["option 1", "option 2", " opt 333"],
+								"correct": 0
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
