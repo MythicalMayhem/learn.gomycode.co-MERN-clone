@@ -31,8 +31,7 @@ function CoursePager() {
             }
         }).then(res => res.json())
             .then(res => course.setCourseData(res.data))
-
-        return () => controller.abort()
+        return () => controller.abort('unmount')
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id])
 

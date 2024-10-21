@@ -6,8 +6,8 @@ function Navigations() {
     console.log(user);
 
 
-    // if (!user.currentUser) return <Navigate to='/auth' />;
-    // else return <Navigate to='/' />
+    if (!user.currentUser) return <Navigate to='/auth' />;
+
     return <></>
 }
 

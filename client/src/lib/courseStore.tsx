@@ -54,16 +54,18 @@ export const courseStore = create<CourseStore>((set) => (
             cw.pageIndex++
             if (cw.pageIndex >= state.courseData?.checkpoints[cw.checkpointIndex].chapters[cw.chapterIndex].pages.length) {
                 cw.pageIndex = 0
-                cw.chapterIndex += 1
-                updateProgress(state.courseData.id, cw.checkpointIndex, cw.chapterIndex)
+                cw.chapterIndex += 1 
             }
             if (cw.chapterIndex >= state.courseData?.checkpoints[cw.checkpointIndex].chapters.length) {
                 cw.pageIndex = 0
                 cw.chapterIndex = 0
                 cw.checkpointIndex += 1
+                updateProgress()
             }
             if (cw.checkpointIndex >= state.courseData?.checkpoints.length) {
                 cw.checkpointIndex = state.courseData?.checkpoints.length - 1
+                cw.chapterIndex = state.courseData?.checkpoints[cw.checkpointIndex].chapters.length - 1
+                cw.pageIndex = state.courseData?.checkpoints[cw.checkpointIndex].chapters[cw.chapterIndex].pages.length - 1
             }
             return { currentWindow: cw }
         }),

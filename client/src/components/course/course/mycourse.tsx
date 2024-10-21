@@ -11,7 +11,7 @@ function MyCourse() {
     const course = courseStore()
     const { checkpointIndex, chapterIndex, pageIndex } = course.currentWindow
     const page = course.courseData?.checkpoints[checkpointIndex].chapters[chapterIndex].pages[pageIndex]
-    
+
 
 
     return (
@@ -36,7 +36,7 @@ function MyCourse() {
             <div className='buttons'>
                 <button onClick={() => course.fallback()}> {'<'} </button>
                 <small>{pageIndex + 1}    / {course.courseData?.checkpoints[checkpointIndex].chapters[chapterIndex].pages.length} </small>
-                <button onClick={() => course.advance(user.updateProgress)} > {'>'}   </button>
+                <button onClick={() => course.advance(() => course.courseData?.id && user.updateProgress(course.courseData?.id, course.currentWindow.checkpointIndex, course.currentWindow.chapterIndex))} > {'>'}   </button>
             </div>
         </div>
     );
