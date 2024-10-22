@@ -10,6 +10,7 @@ import { createCourse } from "./Courses/createCourse"
 import { getStudentByEmail } from "./Auth/readUser"
 import { createStudent } from "./Auth/createUser"
 import { getCourse } from "./Courses/readCourse"
+import { updateProgress } from "./user/updateProgress"
 import { enrollUser } from "./user/enroll"
 
 const app = express()
@@ -84,3 +85,28 @@ app.get("/getCourse", async (req: Request, res: Response) => {
 		return res.send({ success: false, data: { error: "invalid data" } })
 	res.send(await getCourse(client, String(req.headers.courseid)))
 })
+
+app.post("/updateProgress", async (req: Request, res: Response) => {
+	const { email, password, courseid, checkpointIndex, chapterIndex } =
+		req.body
+	console.log(req.body)
+	res.send(
+		await updateProgress(
+			client,
+			email,
+			password,
+			courseid,
+			checkpointIndex,
+			chapterIndex
+		)
+	)
+})
+
+app.post("/getStudentsInfo",async (req: Request, res: Response) => {
+	const { instructorEmail, instructorPassword } = req.body
+	
+})
+app.post("/approveMeeting", async (req: Request, res: Response) => {
+	const { instructorEmail, instructorPassword, whichStudent } = req.body
+})
+

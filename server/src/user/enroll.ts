@@ -22,14 +22,15 @@ export const enrollUser = async (
 				progress: {
 					[courseid]: {
 						meetingApproved: true,
-						progress: 0,
+						progress: {
+							checkpointIndex: 0,
+							chapterIndex: 0
+						},
 					},
 				},
 			},
 		}
-
-		//! ["progress." + courseid + ".progress"]: 10,
-		const result = await users.updateOne({ id: userid }, update)
+		await users.updateOne({ id: userid }, update)
 	} catch (error) {
 		console.log(error)
 	} finally {
