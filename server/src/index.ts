@@ -102,11 +102,9 @@ app.post("/updateProgress", async (req: Request, res: Response) => {
 	)
 })
 
-app.post("/getStudentsInfo",async (req: Request, res: Response) => {
+app.post("/getStudentsInfo", async (req: Request, res: Response) => {
 	const { instructorEmail, instructorPassword } = req.body
-	
 })
 app.post("/approveMeeting", async (req: Request, res: Response) => {
 	const { instructorEmail, instructorPassword, whichStudent } = req.body
 })
-
