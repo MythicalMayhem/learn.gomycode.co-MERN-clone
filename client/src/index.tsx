@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigations from "./lib/Navigations";
 import CoursePager from './components/course/PageRouter';
 import Auth from './components/auth/authPage';
+import InstructorDashBoard from './components/instructor/dashboard';
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,11 +17,12 @@ root.render(
 
 
   <Router>
-    <Navigations />
+    {/* <Navigations /> */}
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/course" element={<CoursePager />} />
       <Route path="/auth" element={<Auth />} />
+      <Route path="/dashboard" element={<InstructorDashBoard />} />
     </Routes>
   </Router>
 

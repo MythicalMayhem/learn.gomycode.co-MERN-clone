@@ -17,34 +17,30 @@ export interface student {
 
 }
 interface instructor {
+  password:string,
+  email:string,
   id?: string,
   name: string,
   students: Array<student>
   approveMeeting: (studentId: string) => void
+  login: (email: string, password: string) => void
 }
 
 export const instructorStore = create<instructor>((set) => ({
   id: undefined,
+  password:"a",
+  email:"a",
   name: "loading name",
-  students: [
-    {
-      id: "123456789",
-      name: "dummy",
-      meetingApproved: false,
-      age: 10,
-      progress: {
-        "123456789": {
-          meetingApproved: false,
-          progress: {
-            checkpointIndex: 10,
-            chapterIndex: 10
-          }
-        }
-      }
+  students: [],
+  login: (email: string, password: string) => fetch("http://127.0.0.1:3001/instructorLogin", {
+    headers: {
+      "Content-Type": "Application/json",
+      email: "a",
+      password: "a",
     }
-  ]
-  ,
-
+  }
+  ).then(res => res.json())
+    .then((res) => set((state) => ({ ...state, ...res }))), 
   approveMeeting: async (studentId) => {
 
   },

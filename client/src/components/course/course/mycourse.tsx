@@ -4,13 +4,20 @@ import Order from "./orderPage";
 import Quiz from "./quizPage";
 import Static from "./staticPage";
 import { userStore } from '../../../lib/userStore';
+import { useNavigate } from 'react-router-dom';
 
 
 function MyCourse() {
+    const navigate = useNavigate()
     const user = userStore()
     const course = courseStore()
     const { checkpointIndex, chapterIndex, pageIndex } = course.currentWindow
     const page = course.courseData?.checkpoints[checkpointIndex].chapters[chapterIndex].pages[pageIndex]
+    ///course?page=skillcheck&id=" + props?.course_id
+
+    if (chapterIndex + 1 >= (course?.courseData?.checkpoints[checkpointIndex].chapters.length || 0)) { 
+        navigate("/course?page=skillcheck&id=" + course.courseData?.id )
+    }
 
 
 
@@ -19,11 +26,10 @@ function MyCourse() {
             <h1>{course.courseData?.name}</h1>
 
             <main className="book">
-
-                {/* 
+                
                 <small>checkpoint  = {checkpointIndex + 1} / {course.courseData?.checkpoints.length} </small>
                 <small>chapter  = {chapterIndex + 1} / {course.courseData?.checkpoints[checkpointIndex].chapters.length} </small>
-                */}
+               
 
                 <small>checkpoint</small><h1 className="checkpoint-name">  {course.courseData?.checkpoints[checkpointIndex].name}</h1>
                 <h2 className="chapter-name"> chapter : {course.courseData?.checkpoints[checkpointIndex].chapters[chapterIndex].name}</h2>

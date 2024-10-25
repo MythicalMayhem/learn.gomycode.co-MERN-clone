@@ -16,6 +16,7 @@ export const userStore = create<user>((set) => ({
   login: (email: string, password: string) => fetch("http://127.0.0.1:3001/signin", {
     method: "GET",
     headers: {
+      "Content-Type": "Application/json",
       email,
       password
     },
@@ -24,9 +25,7 @@ export const userStore = create<user>((set) => ({
     .then(res => res.success ? set({ currentUser: res.data }) : null)
  
   ,
-  updateProgress: (courseid: string, checkpointIndex: number, chapterIndex: number) => {
-    console.log("updating ",courseid);
-    
+  updateProgress: (courseid: string, checkpointIndex: number, chapterIndex: number) => {     
     fetch("http://127.0.0.1:3001/updateProgress", {
       method: "POST",
       headers: { "Content-Type": "Application/json" },
