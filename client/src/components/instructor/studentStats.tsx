@@ -1,28 +1,41 @@
+import "../../styles/instructor/studentStats.css"
 import { useEffect, useState } from "react";
-import { instructorStore, student } from "../../lib/instructorStore";
+import { student } from "../../lib/instructorStore";
+import { useParams, useSearchParams } from "react-router-dom";
 
-function StudentStats({ studentId }: { studentId: string }) {
+function StudentStats() {
   // const { id } = instructorStore()
   const [studentStats, setStudentStats] = useState<student>()
+  const [params] = useSearchParams()
+  console.log(studentStats);
+  
+  const studentId = params.get('studentId');
   useEffect(() => {
+    console.log('getting',studentId);
+    if (!studentId) return
     const abc = new AbortController()
-    fetch("/getStats", {
+    
+    fetch("http://127.0.0.1:3001/getStudentStats", {
       "headers": {
         "Content-Type": "Application/json",
-        studentId
+        studentId,
+        email:"a",
+        password:"a"
       },
       signal: abc.signal,
       method: "GET"
     }).then(res => res.json())
-      .then((res) => !res.error ? setStudentStats(res) : alert('couldn\'t load student'))
-    return abc.abort(" rerendering ")
+      .then((res) => !res.error ? setStudentStats(res.data) : alert('couldn\'t load student'))
+    return () =>  abc.abort(" rerendering ")
   }, [])
 
   return (
-    <>
-      <h3>{studentStats?.name || "loading"}</h3>
-      <h4>{studentStats?.age || "..."}</h4>
-    </>
+    <div className="student-stats">
+      <img src="" alt="" />
+      <p className="name">{studentStats?.name || "loading"}</p>
+      <p className="age">{studentStats?.age || "..."}</p>
+      <button>approve meeting</button>
+    </div>
   );
 }
 

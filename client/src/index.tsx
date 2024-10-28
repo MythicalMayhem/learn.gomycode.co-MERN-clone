@@ -9,6 +9,7 @@ import Navigations from "./lib/Navigations";
 import CoursePager from './components/course/PageRouter';
 import Auth from './components/auth/authPage';
 import InstructorDashBoard from './components/instructor/dashboard';
+import StudentStats from './components/instructor/studentStats';
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -23,6 +24,7 @@ root.render(
       <Route path="/course" element={<CoursePager />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/dashboard" element={<InstructorDashBoard />} />
+      <Route path="/studentStats" element={<StudentStats />} />
     </Routes>
   </Router>
 

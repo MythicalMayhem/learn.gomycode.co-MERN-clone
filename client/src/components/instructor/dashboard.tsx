@@ -1,6 +1,7 @@
+import '../../styles/instructor/dashboard.css'
 import { useEffect, useState } from "react";
 import { student } from "../../lib/instructorStore";
-
+import StudentCard from "./dashboard/studentCard";
 function InstructorDashBoard() {
   const [students, setStudents] = useState<student[]>([])
   useEffect(() => {
@@ -15,12 +16,10 @@ function InstructorDashBoard() {
   }, [])
   console.log(students);
   return (<>
-    {students.map((stu, i) => <div key={i}>
-      <img src="" alt="" className="student-pfp" />
-      <p>name :<b>{stu.name}</b></p> <br />
-      <p>age :<b>{stu.age}</b></p> <br />
-      <button>Check Stats</button>
+    {students.map((stu, i) => <div className="student-card" key={i}>
+      <StudentCard studentid={stu.id} name={stu.name} age={stu.age} />
     </div>)}
+
   </>);
 }
 
